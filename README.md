@@ -10,6 +10,10 @@ OpenPiMap is an open source NetFlow protocol analyzer written entirely in Python
 
 The script has built in functionality to do data consumption statistics, top ports/services charts, and 24 hour / weekly / monthly queries.  However, Shodan.io has a rate limit on their free API usage!! Looking up hundreds or thousands of unique IPs will take a LONG time!! This doesn't break anything.. but be prepared to wait a few hours if you are running monthly reports. 
 
+![alt text](https://raw.githubusercontent.com/evilbotnet/openpimap/master/map_global.png)
+
+![alt text](https://raw.githubusercontent.com/evilbotnet/openpimap/master/map_detail.png)
+
 
 # Notes
 The code isn't quite complete. However, it has been running for 6+ months on my Raspberry Pi 1 Model B without any hiccups.  Be sure to check out the API keys required for Shodan and Twilio functions to work (all requests are well within the free API limits).  You will also need a local copy of the GeoIP database for offline geolocation of IP addresses.  
