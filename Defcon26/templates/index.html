@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+   <head>
+      <title>Netflow Traffic Statistics </title>
+    <script src="../static/sorttable.js"></script>
+
+      <link rel="stylesheet" href='../static/style.css'/>
+    <style>
+	body {
+	    text-align: center;
+	}
+	#g1,
+	#g2 {
+	    width: 200px;
+	    height: 160px;
+	    display: inline-block;
+	    margin: 1em;
+	}
+   </style>
+   </head>
+   <body>
+	<h1>Traffic Statistics at a Glance </h1>
+    <hr>
+	<h3> Inbound  ==>  {{ outbound  }} </h3>
+	<h3> Outbound  ==>  {{ inbound  }} </h3>
+	<hr>
+	<h3> Unique IP Addresses: {{ unique }} ==> <a href="/"class="button">REFRESH</a></h3>
+	<hr>
+   <iframe frameborder='0' align="middle" noresize='noresize' style='background: transparent; width: 85%; height: 500px;' src="{{ url_for('static',filename='iframe.html')}}" frameborder="0"></iframe>
+    <br>
+
+    <div id="g1"></div>
+    <div id="g2"></div>
+
+   <script src="../static/raphael-2.1.4.min.js"></script>
+    <script src="../static/justgage.js"></script>
+
+   <h3> HISTORICAL DATA </h3>
+	<p> Enter number of samples to retrieve:
+	<form method="POST">
+		Number of Samples: <input name="numSamples" value= {{numSamples}}>
+		Port Number: <input name="portNumber" value= {{portNumber}}>
+        IP Address: <input name="IPAddress" value= {{IPAddress}}>
+
+		<input type="submit">
+		</form></p>
+
+    <table class="sortable" align="center">
+    <thead>
+        <tr>
+            <th>Source IP Address</th>
+            <th>Source Port</th>
+            <th>Packets</th>
+            <th>Avg Bytes per Packet</th>
+            <th>Destination IP Address</th>
+            <th>Destination Port</th>
+            <th>Timestamp</th>
+
+        <tr>
+    </thead>
+    <tbody>
+        {% for item in result1 %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
+            <td>{{ item[5] }}</td>
+            <td>{{ item[6] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+   </body>
+</html>
